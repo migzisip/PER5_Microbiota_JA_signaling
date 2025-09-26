@@ -3,13 +3,10 @@
 library("Rbec")
 library("ShortRead")
 
-input_dir <- "C:/Users/user/Desktop/symcom/miseq/FLASH2/flash2_results/usearch"
-ref_fasta <- "C:/Users/user/Desktop/symcom/miseq/rbec/ref_corrected.fasta"
-output_dir <- "C:/Users/user/Desktop/symcom/miseq/rbec/results"
+input_dir <- "/your working directory/FLASH2/flash2_results/usearch"
+ref_fasta <- "/your working directory/rbec/ref_corrected.fasta" ## see (<data/ref_corrected.fasta>)
+output_dir <- "/your working directory/rbec/results"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
-
-fastq_files <- list.files(input_dir, pattern = "\\.extendedFrags\\.filtered\\.fastq$", full.names = TRUE)
-fastq_files <- fastq_files[!grepl("wsper12\\.extendedFrags\\.filtered\\.fastq$", fastq_files)]
 
 for (fq in fastq_files) {
   sample_name <- tools::file_path_sans_ext(basename(fq))
@@ -26,3 +23,4 @@ for (fq in fastq_files) {
     threads = 4,
     sampling_size = 5000 )
 }
+
