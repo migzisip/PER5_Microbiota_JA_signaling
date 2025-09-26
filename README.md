@@ -104,19 +104,6 @@ Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoo
 
 ---
 
-## 📦 Dependencies
-
-Key tools and packages used:
-
-- `kallisto`
-- `DESeq2`
-- `tximport`
-- `edgeR`
-- `ggplot2`, `Complexheatmap`, `clusterProfiler` (for visualization and enrichment)
-- `R` (≥4.2.0)
-
----
-
 ## 🧪 Scripts for microbiome Analysis
 ### 1.1 Experimental Design and Raw Data
 This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
@@ -126,6 +113,22 @@ The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon
 
 ### 1.3 Bubble plot (see <Scripts/Rbec.R>)
 
+---
+
+## 📦 Dependencies
+
+Key tools and packages used:
+
+- `kallisto`
+- `DESeq2`
+- `tximport`
+- `edgeR`
+- `ggplot2`, `Complexheatmap`, `clusterProfiler` (for visualization and enrichment)
+- `Rbec`, `ShortRead` (for Rbec ASV generation)
+- `phyloseq`,`dplyr`,`ggplot2`,`biomformat`,`ggtext`,`forcats`,`rstatix`,`tidyr`,`tibble`,`conflicted` (For spike-in normalized bubble plot)
+- `R` (≥4.2.0)
+
+---
 ---
 ## 📘 Citation
 
