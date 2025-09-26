@@ -90,5 +90,5 @@ done
 
 ##proceed with rbec rather than DADA2 (rbec and DADA2 serve the same function)
 ##rbec shall be run in R
-##run the script "rbec_miseq.R" in folder rbec
+##run the script "rbec.R" in the folder /Script/
 
