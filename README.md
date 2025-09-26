@@ -114,12 +114,15 @@ Key tools and packages used:
 - `edgeR`
 - `ggplot2`, `Complexheatmap`, `clusterProfiler` (for visualization and enrichment)
 - `R` (≥4.2.0)
+
 ---
+
 ## 🧪 Scripts for microbiome Analysis
+### 1.1 Experimental Design and Raw Data
+This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
 
-
-
-
+### 1.2 Read Pre-processing and generating ASV table using Rbec (see <Scripts/microbiome-qiime2 processing.sh>)
+The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
 
 ---
@@ -153,3 +156,11 @@ Chen, S., Zhou, Y., Chen, Y., & Gu, J. (2018). fastp: An ultra-fast all-in-one F
 Yates, A. D., et al. (2022). Ensembl 2022. Nucleic Acids Research, 50(D1), D988–D995. https://doi.org/10.1093/nar/gkab1049
 
 Leek, J. T., Johnson, W. E., Parker, H. S., Jaffe, A. E., & Storey, J. D. (2012). The sva package for removing batch effects and other unwanted variation in high-throughput experiments. Bioinformatics, 28(6), 882–883. https://doi.org/10.1093/bioinformatics/bts034
+
+Zhang, P., Spaepen, S., Bai, Y. et al. Rbec: a tool for analysis of amplicon sequencing data from synthetic microbial communities. ISME COMMUN. 1, 73 (2021). https://doi.org/10.1038/s43705-021-00077-1
+
+Bolyen, E., Rideout, J.R., Dillon, M.R. et al. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. Nat Biotechnol 37, 852–857 (2019). https://doi.org/10.1038/s41587-019-0209-9
+
+Tanja Magoč, Steven L. Salzberg, FLASH: fast length adjustment of short reads to improve genome assemblies, Bioinformatics, Volume 27, Issue 21, November 2011, Pages 2957–2963, https://doi.org/10.1093/bioinformatics/btr507
+
+Robert C. Edgar, Search and clustering orders of magnitude faster than BLAST, Bioinformatics, Volume 26, Issue 19, October 2010, Pages 2460–2461, https://doi.org/10.1093/bioinformatics/btq461
