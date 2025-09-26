@@ -1,8 +1,6 @@
-#20250909 updated by Chiao-Jung Han
-##microbial profiling for per5 project
 ##bubble plot for spike-in normalized abudance
 ##rbec
-setwd("C://Users//user//Desktop//per5 microbial profiling//Rbec//bubble plot")
+setwd("/your directory/")
 library(phyloseq)
 library(dplyr)
 library(ggplot2)
@@ -289,4 +287,5 @@ ggplot(df_avg, aes(x = GroupLabel, y = Family,
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "right"
   )
+
 
