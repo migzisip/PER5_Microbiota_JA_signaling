@@ -155,7 +155,7 @@ This repository provides a workflow to:
 
 ## 1) Retrieve Plant JA-biosynthesis genes from UniProt
 
-**Script:** `fetch_ja_from_uniprot.py`  
+**Script:** `fetch_ja_from_uniprot.py`  [fetch_ja_from_uniprot.py](Scripts/fetch_ja_from_uniprot.py)
 Fetches curated TAIR10 JA biosynthesis/signaling proteins and writes a FASTA plus a mapping table.
 
 ```bash
