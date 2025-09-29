@@ -108,10 +108,10 @@ Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoo
 ### 1.1 Experimental Design and Raw Data
 This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
 
-### 1.2 Read Pre-processing and generating ASV table using Rbec (see <Scripts/microbiome-qiime2 processing.sh>)
+### 1.2 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2 processing.sh](Scripts/microbiome-qiime2 processing.sh)       
 The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
-### 1.3 Bubble plot (see <Scripts/Rbec.R>)
+### 1.3 Bubble plot [Rbec.R](Scripts/Rbec.R)
 
 ---
 
@@ -155,7 +155,7 @@ This repository provides a workflow to:
 
 ## 1) Retrieve Plant JA-biosynthesis genes from UniProt
 
-**Script:** `fetch_ja_from_uniprot.py`  [fetch_ja_from_uniprot.py](Scripts/fetch_ja_from_uniprot.py)
+**Script:** [fetch_ja_from_uniprot.py](Scripts/fetch_ja_from_uniprot.py)
 Fetches curated TAIR10 JA biosynthesis/signaling proteins and writes a FASTA plus a mapping table.
 
 ```bash
@@ -176,7 +176,7 @@ out/ja_uniprot_map.tsv
 
 ## 2) Retrieve 16 bacterial proteomes from NCBI
 
-**Script:** `get_bacteria_proteins.sh`  
+**Script:** [get_bacteria_proteins.sh](Scripts/get_bacteria_proteins.sh)  
 (Downloads protein FASTAs.)
 
 Create `assemblies.txt` with one GenBank/RefSeq assembly accession per line (16 total), e.g.:
@@ -234,7 +234,7 @@ diamond blastp \
 
 ## 5) Summarize results (R)
 
-**Script:** `Sumarize_results_from_DIAMOND.R`  
+**Script:** [Sumarize_results_from_DIAMOND.R](Scripts/Sumarize_results_from_DIAMOND.R)  
 Organizes DIAMOND output into tidy long format and matrices (e.g., counts, max/mean % identity, presence/absence).
 
 - **Input:** `out/results_bact16.tsv`  
@@ -244,7 +244,7 @@ Organizes DIAMOND output into tidy long format and matrices (e.g., counts, max/m
 
 ## 6) Visualize heatmap (R)
 
-**Script:** `Visualize_bacterial_genome_with_plant_JA.R`  
+**Script:** [Visualize_bacterial_genome_with_plant_JA.R](Scripts/Visualize_bacterial_genome_with_plant_JA.R)  
 Generates a single-panel heatmap (ordered by pathway and sample index). Export to **SVG/PNG** for figures.
 
 ---
