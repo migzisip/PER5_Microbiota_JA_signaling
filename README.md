@@ -35,7 +35,7 @@ Plants were germinated with synthetic bacterial community **At-16SC1** on half-s
 
 RNA-seq libraries were prepared by Novogene-Europe and sequenced on an Illumina platform (paired-end 150 bp), with an average depth of ~3 Gb per sample. Each biological condition had 3 replicates.  
 
-Raw reads will be deposited in GEO under accession **[GSEXXXXX]** (to be updated upon release).
+Raw reads will be deposited in GEO under accession **PRJNA1314934** (to be updated upon release).
 
 ---
 
