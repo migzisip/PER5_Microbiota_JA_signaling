@@ -19,7 +19,7 @@ The root-associated plant metagenomes (FASTQ.GZ) used for 16S microbial profilin
 
 ---
 
-## 🧪 Scripts for RNA-seq Analysis
+## 🧬 Scripts for RNA-seq Analysis
 
 This section contains scripts for:
 
@@ -104,7 +104,7 @@ Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoo
 
 ---
 
-## 🧪 Scripts for microbiome Analysis
+## 🧫 Scripts for microbiome Analysis
 ### 1.1 Experimental Design and Raw Data
 This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
 
