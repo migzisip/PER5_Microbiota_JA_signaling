@@ -111,7 +111,7 @@ This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA tr
 ### 1.2 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)       
 The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
-### 1.3 Bubble plot [rbec.R](Scripts/Rbec.R)
+### 1.3 Bubble plot [rbec.R](Scripts/rbec.R)
 
 ---
 
