@@ -130,7 +130,7 @@ Key tools and packages used:
 
 ---
 
-# JA–Bacteria Alignment Pipeline
+# 🦠JA–Bacteria Alignment Pipeline
 
 This repository provides a workflow to:
 
