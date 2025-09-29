@@ -129,6 +129,160 @@ Key tools and packages used:
 - `R` (≥4.2.0)
 
 ---
+
+# JA–Bacteria Alignment Pipeline
+
+This repository provides a workflow to:
+
+- Fetch **Arabidopsis** jasmonic-acid (JA) biosynthesis/signaling proteins from **UniProt**
+- Download **16 bacterial proteomes** from **NCBI** (`.faa`)
+- Build a **DIAMOND** protein database
+- Run **DIAMOND** `blastp`
+- **Summarize** results in **R**
+- **Visualize** as a heatmap and export for figure editing
+
+---
+
+## Requirements
+
+- **Conda/Mamba** (recommended)
+- **Python 3.11** + `requests` (for UniProt fetch)
+- **NCBI datasets** CLI (the download script can auto-fetch the binary if missing)
+- **DIAMOND v2.1.11** (pin this version for reproducibility)
+- **R** (for summarization & visualization scripts)
+
+---
+
+## 1) Retrieve Plant JA-biosynthesis genes from UniProt
+
+**Script:** `fetch_ja_from_uniprot.py`  
+Fetches curated TAIR10 JA biosynthesis/signaling proteins and writes a FASTA plus a mapping table.
+
+```bash
+# (recommended) new env
+mamba create -n ja-uniprot python=3.11 requests -c conda-forge
+mamba activate ja-uniprot
+
+python fetch_ja_from_uniprot.py
+```
+
+**Outputs**
+```
+out/ja_uniprot.faa
+out/ja_uniprot_map.tsv
+```
+
+---
+
+## 2) Retrieve 16 bacterial proteomes from NCBI
+
+**Script:** `get_bacteria_proteins.sh`  
+(Downloads protein FASTAs.)
+
+Create `assemblies.txt` with one GenBank/RefSeq assembly accession per line (16 total), e.g.:
+
+```
+GCF_000005845.2
+GCF_000006765.1
+...
+```
+
+**Run**
+```bash
+# Example working directory 
+cd /RAID1/working/R324/lailoi/LaiLoi/Per5  (adjust if needed)
+bash get_bacteria_proteins.sh assemblies.txt
+```
+
+**Outputs (typical)**
+```
+bacteria_genomes/ncbi_dataset/data/<ACCESSION>/protein.faa[.gz]   # per assembly
+```
+
+---
+
+## 3) Build the DIAMOND database
+
+Convert the combined `.faa` into a DIAMOND DB:
+
+```bash
+diamond makedb --in data/ref_bacteria_proteins.faa -d data/bac_db
+# produces: data/bac_db.dmnd
+```
+
+---
+
+## 4) Run DIAMOND (v2.1.11)
+
+More info: https://github.com/bbuchfink/diamond
+
+```bash
+diamond blastp \
+  --ultra-sensitive \
+  --id 35 \
+  -q out/ja_uniprot.faa \
+  -d data/bac_db \
+  -o out/results_bact16.tsv \
+  -f 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+```
+
+- `--ultra-sensitive` improves recovery of distant homologs  
+- `--id 35` keeps alignments with ≥35% identity  
+- Add `--header` to include column names in the TSV
+
+---
+
+## 5) Summarize results (R)
+
+**Script:** `Sumarize_results_from_DIAMOND.R`  
+Organizes DIAMOND output into tidy long format and matrices (e.g., counts, max/mean % identity, presence/absence).
+
+- **Input:** `out/results_bact16.tsv`  
+- **Outputs:** CSVs for downstream plotting.
+
+---
+
+## 6) Visualize heatmap (R)
+
+**Script:** `Visualize_bacterial_genome_with_plant_JA.R`  
+Generates a single-panel heatmap (ordered by pathway and sample index). Export to **SVG/PNG** for figures.
+
+---
+
+## 7) Final figure editing
+
+Open the exported **SVG** in **Inkscape** (or Illustrator) to adjust fonts, labels, and layout for publication.
+
+---
+
+## Suggested directory layout
+
+```
+.
+├── fetch_ja_from_uniprot.py
+├── get_bacteria_proteins.sh
+├── Sumarize_results_from_DIAMOND.R
+├── Visualize_bacterial_genome_with_plant_JA.R
+├── assemblies.txt
+├── out/
+│   ├── ja_uniprot.faa
+│   ├── ja_uniprot_map.tsv
+│   └── results_bact16.tsv
+├── bacteria_genomes/
+│   └── ncbi_dataset/data/<ACCESSION>/protein.faa[.gz]
+└── data/
+    ├── ref_bacteria_proteins.faa
+    └── bac_db.dmnd
+```
+
+---
+
+## Reproducibility & tips
+
+- Record software versions (Python, `requests`, **DIAMOND 2.1.11**, R packages).
+- If you change DIAMOND filters (`--evalue`, `--id`, `--query-cover`, `--subject-cover`), re-run Step 5 to regenerate matrices.
+- Keep `assemblies.txt` under version control to document the exact proteome set.
+
 ---
 ## 📘 Citation
 
