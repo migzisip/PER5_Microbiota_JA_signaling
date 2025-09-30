@@ -214,7 +214,7 @@ diamond makedb --in data/ref_bacteria_proteins.faa -d data/bac_db
 
 ## 4) Run DIAMOND (v2.1.11)
 
-More info: https://github.com/bbuchfink/diamond
+More info: https://github.com/bbuchfink/diamond (Buchfink et al., 2021).
 
 ```bash
 diamond blastp \
