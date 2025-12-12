@@ -2,7 +2,7 @@
 set -euo pipefail
 
 manifest="merge-manifest.tsv"
-root="/mnt/c/Users/user/Desktop/symcom/miseq/extra_1G/FLASH2/flash2_results/usearch/"
+root="/mnt/c/Users/user/Desktop/symcom/miseq/FLASH2/flash2_results/usearch/"
 pattern="*.extendedFrags.filtered.fastq"   # adjust if your suffix is different
 
 # header (tabs)
