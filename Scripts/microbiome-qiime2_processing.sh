@@ -82,4 +82,5 @@ chmod +x run_usearch_filter.sh ## make the script executable
 ##proceed with rbec rather than DADA2 (rbec and DADA2 serve the same function)
 ##rbec shall be run in R
 ##run the script "run_rbec_batch.R" in the folder /Script/
-
+##merge the file after rbec
+python merge_strain_tables_rbec.py
