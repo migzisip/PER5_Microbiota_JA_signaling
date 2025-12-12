@@ -79,19 +79,6 @@ dos2unix run_usearch_filter.sh
 chmod +x run_usearch_filter.sh ## make the script executable
 ./run_usearch_filter.sh
 
-## merge all samples together, generating the merge-manifest file first
-cd /your working directory/FLASH2/flash2_results/
-#convert the file from DOS format to Unix format and run again
-dos2unix merge_all_fastq.sh
-chmod +x merge_all_fastq.sh ## make the script executable
-./merge_all_fastq.sh
-##merge
-qiime tools import \
-	--type 'SampleData[SequencesWithQuality]' \
-	--input-path merge-manifest.txt \
-	--output-path merged_all_samples.qza \
-	--input-format SingleEndFastqManifestPhred33
-
 ##proceed with rbec rather than DADA2 (rbec and DADA2 serve the same function)
 ##rbec shall be run in R
 ##run the script "run_rbec_batch.R" in the folder /Script/
