@@ -21,7 +21,7 @@ qiime tools import \
     --p-anchor-forward-barcode \
     --p-anchor-reverse-barcode \
     --p-mixed-orientation \
-    --p-error-rate 0 \
+    --p-error-rate 0.1 \ 
     --p-cores 5 \
     --verbose
 
