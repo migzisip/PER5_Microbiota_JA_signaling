@@ -4,9 +4,6 @@
 This repository contains scripts and datasets for the 2025 bioRxiv study by Lu et al. 2025, bioRxiv  
 https://www.biorxiv.org/content/10.1101/2025.03.29.646076v1.full
 
-
-
-
 ## 📂 Data
 
 The root-associated bacterial genomes (FASTA) and annotation files (GFF) used for RNA-seq read mapping, quantification, and genome analysis were obtained from:  
@@ -111,7 +108,13 @@ This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA tr
 ### 1.2 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)       
 The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
-### 1.3 Bubble plot [rbec.R](Scripts/rbec.R)
+### 1.3 Differential abundance analysis [LFC_LFC_scatterplot.R](Scripts/LFC_LFC_scatterplot.R)
+
+### 1.4 Bubble plot [rbec.R](Scripts/rbec.R)
+
+### 1.5 Statistical analyses for betadiversity (ANOSIM, Adonis2, PERMDISP) [anosim_adonis2_betadisper.R](Scripts/anosim_adonis2_betadisper.R)
+
+
 
 ---
 
