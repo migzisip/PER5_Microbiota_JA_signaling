@@ -9,8 +9,8 @@ https://www.biorxiv.org/content/10.1101/2025.03.29.646076v1.full
 The root-associated bacterial genomes (FASTA) and annotation files (GFF) used for RNA-seq read mapping, quantification, and genome analysis were obtained from:  
 🔗 [NCBI BioProject PRJNA297942](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA297942)
 
-The root-associated plant metagenomes (FASTQ.GZ) used for 16S microbial profiling were obtained from: 
-🔗 [NCBI BioProject PRJNA1321540]  
+The root-associated plant metagenomes (FASTQ.GZ) used for 16S microbial profiling were deposited under: 
+🔗 [NCBI BioProject PRJNA1321540] and will be released upon publication.  
 
 ## Scripts  
 
