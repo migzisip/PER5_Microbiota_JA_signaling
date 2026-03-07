@@ -103,7 +103,7 @@ Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoo
 
 ## 🧫 Scripts for microbiome Analysis
 # batch 1 of microbial profiling of per5 vs. WS4 (genotype effect)
-The ASV table from batch 1 was originally generated based on relative abundance but not spike normalized absolute abundance so here uses a different asv table as the input abundance table [asv_table_ws4per5_not_normalized.txt], a metadata file [ws4per5_design_BC.txt], and a taxonomy file [taxonomy_all.txt], using the R script [anosim_adonis2_betadisper_Fig 1D.R].
+The ASV table from batch 1 was originally generated based on relative abundance but not spike normalized absolute abundance so here uses a different asv table as the input abundance table [asv_table_ws4per5_not_normalized.txt](Data/asv_table_ws4per5_not_normalized.txt), a metadata file [ws4per5_design_BC.txt](Data/ws4per5_design_BC.txt), and a taxonomy file [taxonomy_all.txt](Data/taxonomy_all.txt), using the R script [anosim_adonis2_betadisper_Fig 1D.R](Scripts/anosim_adonis2_betadisper_Fig 1D.R).
 
 
 # batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment
