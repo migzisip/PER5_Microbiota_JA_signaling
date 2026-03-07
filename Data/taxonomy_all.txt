@@ -1,0 +1,19 @@
+OTUID	Kingdom	Phylum	Class	Order	Family
+Unassigned	Bacteria				
+spike	Bacteria				
+Root61	Bacteria	Actinobacteria	Actinobacteria	Actinomycetales	Microbacteriaceae
+Root68	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Pseudomonadaceae
+Root101	Bacteria	Actinobacteria	Actinobacteria	Actinomycetales	Intrasporangiaceae
+Root480	Bacteria	Proteobacteria	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae
+Root83	Bacteria	Proteobacteria	Betaproteobacteria	Burkholderiales	Alcaligenaceae
+Root29	Bacteria	Proteobacteria	Betaproteobacteria	Burkholderiales	Comamonadaceae
+Root418	Bacteria	Proteobacteria	Betaproteobacteria	Burkholderiales	Oxalobacteraceae
+Root123D2	Bacteria	Proteobacteria	Alphaproteobacteria	Rhizobiales	Bradyrhizobiaceae
+Root142	Bacteria	Proteobacteria	Alphaproteobacteria	Rhizobiales	Rhizobiaceae
+Root131	Bacteria	Firmicutes	Firmicutes	Bacillales	Bacillaceae
+Root77	Bacteria	Proteobacteria	Alphaproteobacteria	Caulobacterales	Caulobacteraceae
+Root935	Bacteria	Bacteroidetes	Bacteroidetes	Flavobacteriales	Flavobacteriaceae
+Root1310	Bacteria	Actinobacteria	Actinobacteria	Actinomycetales	Streptomycetaceae
+Root265	Bacteria	Actinobacteria	Actinobacteria	Actinomycetales	Mycobacteriaceae
+Root695	Bacteria	Proteobacteria	Alphaproteobacteria	Rhizobiales	Phyllobacteriaceae
+Root685	Bacteria	Proteobacteria	Alphaproteobacteria	Rhizobiales	Hyphomicrobiaceae
