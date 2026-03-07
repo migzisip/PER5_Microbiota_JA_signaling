@@ -102,17 +102,19 @@ Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoo
 ---
 
 ## 🧫 Scripts for microbiome Analysis
-### 1.1 Experimental Design and Raw Data
-This is the batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
+# batch 1 of microbial profiling of per5 vs. WS4 (genotype effect).
+The ASV table from batch 1 was originally generated based on relative abundance but not spike normalized absolute abundance so here uses a different asv table as the input abundance table [asv_table_ws4per5_not_normalized.txt], a metadata file [ws4per5_design_BC.txt], and a taxonomy file [taxonomy_all.txt], using the R script [anosim_adonis2_betadisper_Fig 1D.R].
 
-### 1.2 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)       
+
+# batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment.
+### 2.1 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)       
 The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
-### 1.3 Differential abundance analysis [LFC_LFC_scatterplot.R](Scripts/LFC_LFC_scatterplot.R)
+### 2.2 Differential abundance analysis [LFC_LFC_scatterplot.R](Scripts/LFC_LFC_scatterplot.R)
 
-### 1.4 Bubble plot [rbec.R](Scripts/rbec.R)
+### 2.3 Bubble plot [rbec.R](Scripts/rbec.R)
 
-### 1.5 Statistical analyses for betadiversity (ANOSIM, Adonis2, PERMDISP) [anosim_adonis2_betadisper.R](Scripts/anosim_adonis2_betadisper.R)
+### 2.4 Statistical analyses for betadiversity (ANOSIM, Adonis2, PERMDISP) [anosim_adonis2_betadisper.R](Scripts/anosim_adonis2_betadisper.R)
 
 
 
