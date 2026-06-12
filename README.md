@@ -1,18 +1,18 @@
+# Upregulated jasmonate signaling shifts Arabidopsis microbiota interactions and stress adaptations through a positive feedback loop
 
-# Misregulation of the jasmonate signaling pathway leads to altered plant microbiota interaction and plant stress responses
-
-This repository contains scripts and datasets for the 2025 bioRxiv study by Lu et al. 2025, bioRxiv  
-https://www.biorxiv.org/content/10.1101/2025.03.29.646076v1.full
+This repository contains scripts and datasets for the 2026 ISME paper by Lu et al. 2026.
+https://doi.org/10.1093/ismejo/wrag146
 
 ## 📂 Data
 
-The root-associated bacterial genomes (FASTA) and annotation files (GFF) used for RNA-seq read mapping, quantification, and genome analysis were obtained from:  
+The root-associated bacterial genomes (FASTA) and annotation files (GFF) used for RNA-seq read mapping, quantification, and genome analysis were obtained from:
 🔗 [NCBI BioProject PRJNA297942](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA297942)
 
-The root-associated plant metagenomes (FASTQ.GZ) used for 16S microbial profiling were deposited under: 
-🔗 [NCBI BioProject PRJNA1321540] and will be released upon publication.  
+The plant RNA-seq transcriptome data generated in this study were deposited in NCBI under BioProject 🔗 [PRJNA1314934](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1314934).
 
-## Scripts  
+The root-associated microbiome sequencing data used for 16S rRNA gene-based community profiling have been deposited in NCBI under BioProject accession 🔗[PRJNA1321540]()
+
+## Scripts
 
 ---
 
@@ -27,10 +27,10 @@ This section contains scripts for:
 
 ### 1.1 Experimental Design and Raw Data
 
-Arabidopsis thaliana ecotypes Col-0 and Ws4, as well as mutant lines including **per5**, were used in transcriptomic experiments.  
+Arabidopsis thaliana ecotypes Col-0 and Ws4, as well as mutant lines including **per5**, were used in transcriptomic experiments.
 Plants were germinated with synthetic bacterial community **At-16SC1** on half-strength MS medium for 14 days. Roots and shoots were harvested separately and RNA was extracted using the RNeasy Plant Mini Kit (Qiagen).
 
-RNA-seq libraries were prepared by Novogene-Europe and sequenced on an Illumina platform (paired-end 150 bp), with an average depth of ~3 Gb per sample. Each biological condition had 3 replicates.  
+RNA-seq libraries were prepared by Novogene-Europe and sequenced on an Illumina platform (paired-end 150 bp), with an average depth of ~3 Gb per sample. Each biological condition had 3 replicates.
 
 Raw reads will be deposited in GEO under accession **PRJNA1314934** (to be updated upon release).
 
@@ -41,7 +41,7 @@ Raw reads will be deposited in GEO under accession **PRJNA1314934** (to be updat
 Quality Checking and Trimming: [pre_processing_Script.sh](Scripts/pre_processing_Script.sh)
 Alignment: [align_kallisto_script.sh](Scripts/align_kallisto_script.sh)
 
-Raw RNA-seq reads were processed using **fastp** (v0.23.2) with default parameters for paired-end reads. Adapter sequences and low-quality bases were trimmed.  
+Raw RNA-seq reads were processed using **fastp** (v0.23.2) with default parameters for paired-end reads. Adapter sequences and low-quality bases were trimmed.
 
 High-quality reads were pseudo-aligned to the *Arabidopsis thaliana* TAIR10.58 transcriptome using **kallisto** (Bray et al., 2016). On average, ~11.6 million paired-end reads were obtained per sample.
 
@@ -49,13 +49,13 @@ Transcript-level quantifications were imported using **tximport** (Soneson et al
 
 ### 1.3 Normalization and Clustering
 
-Roots: [Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Roots.R)  
+Roots: [Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Roots.R)
 Shoots: [Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Shoots.R](Scripts/Rscript_Kmeans_Clustering_Heatmap_analysis_PER5_SynCom16_Shoots.R)
 
-Low-abundance transcripts absent in at least two replicates were removed.  
+Low-abundance transcripts absent in at least two replicates were removed.
 Counts were log2-transformed and batch effects were corrected using surrogate variable analysis (SVA) and the `removeBatchEffect()` function in the **limma** package (Ritchie et al., 2015).
 
-Normalized counts were scaled and z-transformed by transcript.  
+Normalized counts were scaled and z-transformed by transcript.
 Z-scores were used for **k-means clustering** (k = 8), with cluster number determined by SSE and AIC.
 
 ### Output:
@@ -66,48 +66,51 @@ Z-scores were used for **k-means clustering** (k = 8), with cluster number deter
 
 Differential expression was analyzed using **DESeq2** (Love et al., 2014). Key comparisons included:
 
-1. per5 mock vs WT mock  
-2. SynCom-treated WT vs WT mock  
-3. SynCom-treated per5 vs SynCom-treated WT  
-4. SynCom-treated per5 vs per5 mock  
+1. per5 mock vs WT mock
+2. SynCom-treated WT vs WT mock
+3. SynCom-treated per5 vs SynCom-treated WT
+4. SynCom-treated per5 vs per5 mock
 
 Transcripts with adjusted p-value ≤ 0.05 and |log2FC| ≥ log2(1.5) were considered significant.
 
-Roots: [Rscript_DEG_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_DEG_analysis_PER5_SynCom16_Roots.R)  
+Roots: [Rscript_DEG_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_DEG_analysis_PER5_SynCom16_Roots.R)
 Shoots: [script_DEG_analysis_PER5_SynCom16_Shoots.R](Scripts/Rscript_DEG_analysis_PER5_SynCom16_Shoots.R)
 
-**GO enrichment** was performed using **GOseq** (Young et al., 2010), accounting for transcript length bias.  
+**GO enrichment** was performed using **GOseq** (Young et al., 2010), accounting for transcript length bias.
 Significant Biological Process terms (adj. p < 0.05) were visualized with **clusterProfiler** (Yu et al., 2012).
 
-Roots: [Rscript_GO_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_GO_analysis_PER5_SynCom16_Roots.R)  
+Roots: [Rscript_GO_analysis_PER5_SynCom16_Roots.R](Scripts/Rscript_GO_analysis_PER5_SynCom16_Roots.R)
 Shoots: [Rscript_GO_analysis_PER5_SynCom16_Shoots.R](Scripts/Rscript_GO_analysis_PER5_SynCom16_Shoots.R)
 
 ---
 
 ## 🌿 Marker Gene Analysis for JA and SA Pathways
 
-This script generates a heatmap of selected marker genes involved in **jasmonic acid (JA)** and **salicylic acid (SA)** signaling pathways based on RNA-seq data from Arabidopsis roots and shoots.  
+This script generates a heatmap of selected marker genes involved in **jasmonic acid (JA)** and **salicylic acid (SA)** signaling pathways based on RNA-seq data from Arabidopsis roots and shoots.
 
 Z-score normalized log₂ fold-change values for different genotypes and SynCom treatments are visualized to highlight hormone-responsive expression patterns. Marker genes were grouped by functional annotation, and plotted using the `ComplexHeatmap` package.
 
-JA: 
+JA:
 
- Root SA: [Rscript_SA_Marker_Genes_Root.R](Scripts/Rscript_SA_Marker_Genes_Root.R)  
+ Root SA: [Rscript_SA_Marker_Genes_Root.R](Scripts/Rscript_SA_Marker_Genes_Root.R)
 Shoot SA: [Rscript_SA_Marker_Genes_Shoot.R](Scripts/Rscript_SA_Marker_Genes_Shoot.R)
 
-📊 Output: [SA marker PER5 Root.pdf](<Data/SA marker PER5 Root.pdf>);   [SA marker PER5 Shoot.pdf](<Data/SA marker PER5 Shoot.pdf>)
+📊 Output: [SA marker PER5 Root.pdf](Data/SA marker PER5 Root.pdf);   [SA marker PER5 Shoot.pdf](Data/SA marker PER5 Shoot.pdf)
 
 *More details and usage instructions can be found in each script folder.*
 
 ---
 
 ## 🧫 Scripts for microbiome Analysis
+
 # batch 1 of microbial profiling of per5 vs. WS4 (genotype effect)
+
 The ASV table from batch 1 was originally generated based on relative abundance but not spike normalized absolute abundance so here uses a different asv table as the input abundance table [asv_table_ws4per5_not_normalized.txt](Data/asv_table_ws4per5_not_normalized.txt), a metadata file [ws4per5_design_BC.txt](Data/ws4per5_design_BC.txt), and a taxonomy file [taxonomy_all.txt](Data/taxonomy_all.txt), using the R script [anosim_adonis2_betadisper_Fig 1D.R](Scripts/anosim_adonis2_betadisper_Fig 1D.R)
 
-
 # batch 2 of microbial profiling of per5 vs. WS4 under DCB and MeJA treatment
-### 2.1 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)       
+
+### 2.1 Read Pre-processing and generating ASV table using Rbec [microbiome-qiime2_processing.sh](Scripts/microbiome-qiime2_processing.sh)
+
 The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon (Bolyen et al., 2019), followed by primer removal, merging of the paired-end reads with FLASH2 (Magoč et al., 2011), filtering of low-quality sequences using USEARCH (Robert et al., 2010), and generation of the ASV table with Rbec (Zhang et al., 2021).
 
 ### 2.2 Differential abundance analysis [LFC_LFC_scatterplot.R](Scripts/LFC_LFC_scatterplot.R)
@@ -115,8 +118,6 @@ The raw reads were first demultiplexed using Cutadapt in QIIME2-2024.10-amplicon
 ### 2.3 Bubble plot [rbec.R](Scripts/rbec.R)
 
 ### 2.4 Statistical analyses for betadiversity (ANOSIM, Adonis2, PERMDISP) [anosim_adonis2_betadisper.R](Scripts/anosim_adonis2_betadisper.R)
-
-
 
 ---
 
@@ -172,6 +173,7 @@ python fetch_ja_from_uniprot.py
 ```
 
 **Outputs**
+
 ```
 out/ja_uniprot.faa
 out/ja_uniprot_map.tsv
@@ -181,7 +183,7 @@ out/ja_uniprot_map.tsv
 
 ## 2) Retrieve 16 bacterial proteomes from NCBI
 
-**Script:** [get_bacteria_proteins.sh](Scripts/get_bacteria_proteins.sh)  
+**Script:** [get_bacteria_proteins.sh](Scripts/get_bacteria_proteins.sh)
 (Downloads protein FASTAs.)
 
 Create `assemblies.txt` with one GenBank/RefSeq assembly accession per line (16 total), e.g.:
@@ -193,6 +195,7 @@ GCF_000006765.1
 ```
 
 **Run**
+
 ```bash
 # Example working directory 
 cd /RAID1/working/R324/lailoi/LaiLoi/Per5  (adjust if needed)
@@ -200,6 +203,7 @@ bash get_bacteria_proteins.sh assemblies.txt
 ```
 
 **Outputs (typical)**
+
 ```
 bacteria_genomes/ncbi_dataset/data/<ACCESSION>/protein.faa[.gz]   # per assembly
 ```
@@ -231,25 +235,24 @@ diamond blastp \
   -f 6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
 ```
 
-- `--ultra-sensitive` improves recovery of distant homologs  
-- `--id 35` keeps alignments with ≥35% identity  
+- `--ultra-sensitive` improves recovery of distant homologs
+- `--id 35` keeps alignments with ≥35% identity
 - Add `--header` to include column names in the TSV
 
 ---
 
 ## 5) Summarize results (R)
 
-**Script:** [Sumarize_results_from_DIAMOND.R](Scripts/Sumarize_results_from_DIAMOND.R)  
-Organizes DIAMOND output into tidy long format and matrices (e.g., counts, max/mean % identity, presence/absence).
+**Script:** [Sumarize_results_from_DIAMOND.R](Scripts/Sumarize_results_from_DIAMOND.R)Organizes DIAMOND output into tidy long format and matrices (e.g., counts, max/mean % identity, presence/absence).
 
-- **Input:** `out/results_bact16.tsv`  
+- **Input:** `out/results_bact16.tsv`
 - **Outputs:** CSVs for downstream plotting.
 
 ---
 
 ## 6) Visualize heatmap (R)
 
-**Script:** [Visualize_bacterial_genome_with_plant_JA.R](Scripts/Visualize_bacterial_genome_with_plant_JA.R)  
+**Script:** [Visualize_bacterial_genome_with_plant_JA.R](Scripts/Visualize_bacterial_genome_with_plant_JA.R)
 Generates a single-panel heatmap (ordered by pathway and sample index). Export to **SVG/PNG** for figures.
 
 ---
@@ -289,6 +292,7 @@ Open the exported **SVG** in **Inkscape** (or Illustrator) to adjust fonts, labe
 - Keep `assemblies.txt` under version control to document the exact proteome set.
 
 ---
+
 ## 📘 Citation
 
 If you use this code or data, please cite:
@@ -299,9 +303,10 @@ Lu et al., 2025. *Misregulation of the jasmonate signaling pathway leads to alte
 
 ## 🛠 Contact
 
-For questions or feedback, please open an issue or contact the corresponding author listed in the preprint.  
+For questions or feedback, please open an issue or contact the corresponding author listed in the preprint.
 
 ## 📚 References
+
 Bray, N. L., Pimentel, H., Melsted, P., & Pachter, L. (2016). Near-optimal probabilistic RNA-seq quantification. Nature Biotechnology, 34(5), 525–527. https://doi.org/10.1038/nbt.3519
 
 Buchfink, B., Reuter, K. & Drost, HG. Sensitive protein alignments at tree-of-life scale using DIAMOND. Nat Methods 18, 366–368 (2021). https://doi.org/10.1038/s41592-021-01101-x
