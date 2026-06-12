@@ -10,7 +10,7 @@ The root-associated bacterial genomes (FASTA) and annotation files (GFF) used fo
 
 The plant RNA-seq transcriptome data generated in this study were deposited in NCBI under BioProject 🔗 [PRJNA1314934](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1314934).
 
-The root-associated microbiome sequencing data used for 16S rRNA gene-based community profiling have been deposited in NCBI under BioProject accession 🔗[PRJNA1321540]()
+The root-associated microbiome sequencing data used for 16S rRNA gene-based community profiling have been deposited in NCBI under BioProject accession 🔗[PRJNA1321540](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1321540)
 
 ## Scripts
 
